@@ -33,11 +33,13 @@ function genNameHtml(obj) {
     book,
     dynasty } = obj;
 
+  const areaName = $('input[name="area"]').val();
   const familyName = $('input[name="family-name"]').val();
+  const companyName = $('input[name="company"]').val();
   const sentenceHtml = sentence.replace(new RegExp(`[${name}]`, 'ig'), char => `<i>${char}</i>`);
   return `
     <li class='name-box'>
-        <h3>${familyName}${name}</h3>
+        <div class="name">${areaName}<span>${familyName}${name}</span>${companyName}</div>
         <p class='sentence'>
           <span>「</span>
           ${sentenceHtml}
@@ -68,13 +70,14 @@ function clearLoading() {
 
 function createRadioGroup() {
   const books = [
-    { value: 'shijing', name: '诗经', checked: true },
-    { value: 'chuci', name: '楚辞' },
-    { value: 'tangshi', name: '唐诗' },
-    { value: 'songci', name: '宋词' },
-    { value: 'yuefu', name: '乐府诗集' },
-    { value: 'gushi', name: '古诗三百首' },
-    { value: 'cifu', name: '著名辞赋' },
+    { value: 'all', name: '引经据典', checked: true },
+    // { value: 'shijing', name: '诗经', checked: true },
+    // { value: 'chuci', name: '楚辞' },
+    // { value: 'tangshi', name: '唐诗' },
+    // { value: 'songci', name: '宋词' },
+    // { value: 'yuefu', name: '乐府诗集' },
+    // { value: 'gushi', name: '古诗三百首' },
+    // { value: 'cifu', name: '著名辞赋' },
   ];
   if (debugMode) {
     books.push({ value: 'test', name: '测试', checked: true });
